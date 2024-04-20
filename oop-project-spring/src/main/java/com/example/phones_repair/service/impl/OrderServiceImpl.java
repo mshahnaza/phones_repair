@@ -2,6 +2,7 @@ package com.example.phones_repair.service.impl;
 
 import com.example.phones_repair.dto.client.ClientResponse;
 import com.example.phones_repair.dto.order.MakeOrderRequest;
+import com.example.phones_repair.entities.Client;
 import com.example.phones_repair.entities.Order;
 import com.example.phones_repair.exception.NotFoundException;
 import com.example.phones_repair.mapper.ClientMapper;
@@ -29,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
     public void makeRepair(MakeOrderRequest orderRequest) {
         Order order = new Order();
         order.setClient_id(orderRequest.getClient_id());
+        order.setOrder_name(orderRequest.getOrder_name());
         orderRepository.save(order);
         if (clientRepository.findById(orderRequest.getClient_id()).isEmpty())
             throw new NotFoundException("the product with id: "+ orderRequest.getClient_id() +" is empty!", HttpStatus.BAD_REQUEST);
