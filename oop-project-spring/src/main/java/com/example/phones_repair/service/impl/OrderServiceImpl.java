@@ -1,8 +1,7 @@
 package com.example.phones_repair.service.impl;
 
 import com.example.phones_repair.dto.client.ClientResponse;
-import com.example.phones_repair.dto.order.MakeOrderRequest;
-import com.example.phones_repair.entities.Client;
+import com.example.phones_repair.dto.order.ExecuteOrderRequest;
 import com.example.phones_repair.entities.Order;
 import com.example.phones_repair.exception.NotFoundException;
 import com.example.phones_repair.mapper.ClientMapper;
@@ -27,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     @Override
-    public void makeRepair(MakeOrderRequest orderRequest) {
+    public void executeOrder(ExecuteOrderRequest orderRequest) {
         Order order = new Order();
         order.setClient_id(orderRequest.getClient_id());
         order.setOrder_name(orderRequest.getOrder_name());

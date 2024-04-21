@@ -15,6 +15,8 @@ public class Client {
 
     private Integer price;
 
+    private Long my_id;
+
     public Long getId() {
         return id;
     }
@@ -45,5 +47,13 @@ public class Client {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Long getMy_id() {
+        return my_id;
+    }
+
+    public void setMy_id(Long my_id) {
+        this.my_id = my_id;
     }
 }

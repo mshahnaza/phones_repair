@@ -22,6 +22,7 @@ public class DetailsMapperImpl implements DetailsMapper {
     @Override
     public DetailOrderResponse toDto(Details details) {
         DetailOrderResponse orderResponse = new DetailOrderResponse();
+        orderResponse.setId(details.getId());
         orderResponse.setDetail_name(details.getDetail_name());
         return orderResponse;
     }

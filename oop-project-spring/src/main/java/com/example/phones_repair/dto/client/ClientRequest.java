@@ -7,6 +7,16 @@ public class ClientRequest {
 
     private Integer price;
 
+    private Long my_id;
+
+    public Long getMy_id() {
+        return my_id;
+    }
+
+    public void setMy_id(Long my_id) {
+        this.my_id = my_id;
+    }
+
     public String getOption() {
         return option;
     }
