@@ -33,7 +33,7 @@ public class DetailsServiceImpl implements DetailsService {
     @Override
     public void deleteOrder(Long id) {
         if (detailsRepository.findById(id).isEmpty())
-            throw new NotFoundException("the product with id: "+id+" is empty!", HttpStatus.BAD_REQUEST);
+            throw new NotFoundException("The detail with id: "+id+" is empty!", HttpStatus.BAD_REQUEST);
         detailsRepository.deleteById(id);
     }
 

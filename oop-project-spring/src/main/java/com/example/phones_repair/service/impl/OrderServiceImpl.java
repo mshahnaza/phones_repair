@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrder_name(orderRequest.getOrder_name());
         orderRepository.save(order);
         if (clientRepository.findById(orderRequest.getClient_id()).isEmpty())
-            throw new NotFoundException("the product with id: "+ orderRequest.getClient_id() +" is empty!", HttpStatus.BAD_REQUEST);
+            throw new NotFoundException("The order with id: "+ orderRequest.getClient_id() +" is empty!", HttpStatus.BAD_REQUEST);
         clientRepository.deleteById(orderRequest.getClient_id());
     }
 

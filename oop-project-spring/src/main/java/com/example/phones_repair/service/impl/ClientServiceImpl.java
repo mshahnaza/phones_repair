@@ -3,6 +3,9 @@ package com.example.phones_repair.service.impl;
 import com.example.phones_repair.dto.client.ClientRequest;
 import com.example.phones_repair.entities.Client;
 import com.example.phones_repair.entities.Order;
+import com.example.phones_repair.exception.CustomException;
+import com.example.phones_repair.exception.ExceptionResponse;
+import com.example.phones_repair.exception.NotFoundException;
 import com.example.phones_repair.mapper.ClientMapper;
 import com.example.phones_repair.mapper.OrderMapper;
 import com.example.phones_repair.repositories.ClientRepository;
@@ -10,6 +13,7 @@ import com.example.phones_repair.repositories.OrderRepository;
 import com.example.phones_repair.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -65,25 +69,10 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.save(client);
     }
 
-//    @Override
-//    public Optional<Order> checkStatus(ClientRequest clientRequest) {
-//        if (clientRepository.findById(clientRequest.getMy_id()).isEmpty()) {
-//            System.out.println("Your phone ready!");
-//            return orderRepository.findById(clientRequest.getMy_id());
-//        }
-//        else {
-//            System.out.println("Your phone is not ready yet!");
-//        }
-//        return null;
-//    }
-
     @Override
-    public void checkStatus(ClientRequest clientRequest) {
-        if (clientRepository.findById(clientRequest.getMy_id()).isEmpty()) {
-            System.out.println("Your phone ready!");
-        }
-        else {
-            System.out.println("Your phone is not ready yet!");
-        }
+    public Optional<Order> checkStatus(Long id) {
+        if (!clientRepository.findById(id).isEmpty())
+            throw new NotFoundException("Your phone is not ready yet!", HttpStatus.BAD_REQUEST);
+        return orderRepository.findById(id);
     }
 }

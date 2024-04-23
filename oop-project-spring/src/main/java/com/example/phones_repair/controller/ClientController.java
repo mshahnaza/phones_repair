@@ -19,8 +19,8 @@ public class ClientController {
         clientService.addOrder(clientRequest);
     }
 
-    @GetMapping("checkStatus")
-    public void checkStatus(@RequestBody ClientRequest clientRequest) {
-        clientService.checkStatus(clientRequest);
+    @GetMapping("checkStatus/{id}")
+    public Optional<Order> checkStatus(@PathVariable Long id) {
+        return  clientService.checkStatus(id);
     }
 }

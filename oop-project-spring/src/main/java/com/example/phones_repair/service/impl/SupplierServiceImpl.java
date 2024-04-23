@@ -37,7 +37,7 @@ public class SupplierServiceImpl implements SupplierService {
         supplier.setDetail_name(supplierRequest.getDetail_name());
         supplierRepository.save(supplier);
         if (detailsRepository.findById(supplierRequest.getOrder_id()).isEmpty())
-            throw new NotFoundException("the product with id: "+ supplierRequest.getOrder_id() +" is empty!", HttpStatus.BAD_REQUEST);
+            throw new NotFoundException("The order with id: "+ supplierRequest.getOrder_id() +" is empty!", HttpStatus.BAD_REQUEST);
         detailsRepository.deleteById(supplierRequest.getOrder_id());
     }
 

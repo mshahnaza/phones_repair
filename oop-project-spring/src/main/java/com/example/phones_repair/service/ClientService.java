@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ClientService {
     void addOrder(ClientRequest clientRequest);
-    void checkStatus(ClientRequest clientRequest);
+    Optional<Order> checkStatus(Long id);
 }
